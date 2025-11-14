@@ -10,11 +10,22 @@ function [U,V,W] = makeUVWfromCoeff(coeff)
 % that fits nicely within the local dimensions of your visualized object. 
 % It "extends" clarity rather than actual length, effectively adjusting it 
 % from "way too long" to "just right" for visualization purposes.
+%
+% Inputs
+%   coeff : 3x3 PCA basis (columns are principal axes).
+%
+% Outputs
+%   U,V,W : 3x1 vectors giving small arrow components along each axis.
+%           These are handy for quiver3 plots at the object center.
+%
+% Example
+%   [U,V,W] = makeUVWfromCoeff(coeff);
+%   quiver3(cx,cy,cz, U(1),U(2),U(3)); % axis-1 arrow, etc.
 %--------------------------------------------------------------------------
     
-    % Scale down to match point cloud density
+    
     visual_fitting = 0.05;
-
+    
     % 1st principal axis
     U1 = coeff(1, 1) * visual_fitting;
     V1 = coeff(2, 1) * visual_fitting;
@@ -29,10 +40,8 @@ function [U,V,W] = makeUVWfromCoeff(coeff)
     U3 = coeff(1, 3) * visual_fitting;
     V3 = coeff(2, 3) * visual_fitting;
     W3 = coeff(3, 3) * visual_fitting;
-
-    % Group
+    
     U = [U1;U2;U3];
     V = [V1;V2;V3];
     W = [W1;W2;W3];
-
 end
