@@ -41,10 +41,10 @@ function objectData = getObjectData(ptCloud_base, nonPlane_pic, myImg, bboxes, n
     tform_to_cam = rigidtform3d(cam_to_base_pose);
 
     % TODO: Transform the reference frame of point clouds ptCloud_base with tform_to_cam
-    ptCloud_tform_cam = %complete code here%
+    ptCloud_tform_cam = pctransform(ptCloud_base, tform_to_cam);
 
     % TODO: Also do for non-plane specific points nonPlane_pic with tform_to_cam
-    nonPlane_tform_cam = %complete code here%
+    nonPlane_tform_cam = pctransform(nonPlane_pic, tform_to_cam);
     
     %% 02 Estimate object pose wrt to base
     disp("Finding object pose with respect to base_link...")

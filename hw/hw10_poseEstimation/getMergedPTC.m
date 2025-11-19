@@ -101,7 +101,7 @@ function [ptCloud_pic, nonPlane_pic, ptCloud_world, base_to_cam_pose, cam_to_bas
         [ptCloud_recent, ~, ~, ~] = messyGetPointCloud(optns);
 
         % c) TODO: Merge ptCloud_world and ptCloud_recent (world+above) with a grid step of 0.001 and output to ptCloud_world
-        ptCloud_world = %complete code here%
+        ptCloud_world = pcmerge(ptCloud_world, ptCloud_recent, 0.001);
 
         % d) Find relevant points from merged pt cloud
         indices = findPointsInROI(ptCloud_world,table_roi);
@@ -137,7 +137,7 @@ function [ptCloud_pic, nonPlane_pic, ptCloud_world, base_to_cam_pose, cam_to_bas
     maxPlaneTilt = 5;
 
     % TODO: Fit the horizontal plane given ptCloud_pic and the three arguments above.
-    [param, planeIdx, nonPlaneIdx] = %complete code here%
+    [param, planeIdx, nonPlaneIdx] = pcfitplane(ptCloud_pic, planeThickness, normalVector, maxPlaneTilt);
 
     % Create indexed entities
     plane_pic = select(ptCloud_pic, planeIdx);
