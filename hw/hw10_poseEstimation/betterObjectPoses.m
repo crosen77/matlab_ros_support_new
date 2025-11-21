@@ -101,8 +101,9 @@ function [xyz,theta,ptCloud_vec,scene_pca_vec] = betterObjectPoses(ptCloud_tform
         end
     
         % ---------------------------------------------------------------------
-        % Convert image ROI -> camera-frame XY ROI (Z uses full scene span)    bbox_roi_xmin = pc_xmin + (left_column*xpixel_base_scale);
+        % Convert image ROI -> camera-frame XY ROI (Z uses full scene span)    
         % ---------------------------------------------------------------------    
+        bbox_roi_xmin = pc_xmin + (left_column*xpixel_base_scale);
         bbox_roi_xmax = pc_xmin + (right_column*xpixel_base_scale);
         
         bbox_roi_ymin = pc_ymin + (top_row*ypixel_base_scale);
@@ -211,7 +212,7 @@ function [xyz,theta,ptCloud_vec,scene_pca_vec] = betterObjectPoses(ptCloud_tform
         % Choose representative Z using a thin patch around (center.x, center.y)
         % (You kept "center" for xyz; leaving the patch code here for reference.)
         % ---------------------------------------------------------------------    
-        roi = [centroid(1)-0.01 centroid(1)+0.01 centroid(2)-0.01 centroid(2)+0.01 -inf inf];
+        roi = [center(1)-0.01 center(1)+0.01 center(2)-0.01 center(2)+0.01 -inf inf];
         indices = findPointsInROI(ptScene,roi);
         pt_surface_patch = select(ptScene,indices);
         z = mean(pt_surface_patch.Location(:,3));

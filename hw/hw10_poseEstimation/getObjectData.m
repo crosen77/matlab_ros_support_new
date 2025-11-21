@@ -57,6 +57,7 @@ function objectData = getObjectData(ptCloud_base, nonPlane_pic, myImg, bboxes, n
 
     % If using merged point clouds:
     [xyz,theta,ptCloud_vec,scene_pca_vec] = betterObjectPoses(ptCloud_tform_cam, ...    % all points wrt to base                                                              
+                                                              nonPlane_tform_cam, ...
                                                               myImg, ...                % rgb image
                                                               bboxes, ...               % yolo bounding boxes
                                                               gridDownsample, ...       % downsample factor

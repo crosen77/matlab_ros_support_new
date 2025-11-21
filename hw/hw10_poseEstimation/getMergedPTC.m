@@ -92,8 +92,9 @@ function [ptCloud_pic, nonPlane_pic, ptCloud_world, base_to_cam_pose, cam_to_bas
             displaceG = displace_gripper(mat_R_T_G,optns,locations{iter},0.07);
         
         % These motions rotate the gripper inwards at end of displacement
-        % to center object.         elseif iter > 5
-             displaceGA = displace_gripper(mat_R_T_G,optns,locations{iter},0.07,1,0.05);
+        % to center object.
+        elseif iter > 5
+            displaceGA = displace_gripper(mat_R_T_G,optns,locations{iter},0.07,1,0.05);
         end
 
         % b) Get point cloud (above) at that location
@@ -107,7 +108,7 @@ function [ptCloud_pic, nonPlane_pic, ptCloud_world, base_to_cam_pose, cam_to_bas
         indices = findPointsInROI(ptCloud_world,table_roi);
 
         % TODO: select indecs for ptCloud_world and output ptCloud_world
-        ptCloud_world = %complete code here%
+        ptCloud_world = select(ptCloud_world, indices);
         pause(5);
 
         %% e) Visualize
@@ -150,7 +151,7 @@ function [ptCloud_pic, nonPlane_pic, ptCloud_world, base_to_cam_pose, cam_to_bas
         figure(2),pcshow(plane_pic,'ViewPlane','XY');axis on;
         
         % TODO: show nonPlane point cloude with an XY View of the plane and axis on
-        figure(3),
+        figure(3),pcshow(nonPlane_pic, 'ViewPlane','XY');axis on;
         
         % Labels
         xlabel("X"); ylabel("Y"); zlabel("Z"); title("Cropped merged point cloud wrt base link");

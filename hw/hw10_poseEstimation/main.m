@@ -15,6 +15,8 @@
     % r will contains all publisher/subscriber/service/action/kinematic/tf info
     disp("Creating Robot Handle...");
     r = rosClassHandle_UR5e;
+    %r.general_detector = load(fullfile(r.h2m, r.m2d));
+             
 
     %% 02 Create Options 
     
