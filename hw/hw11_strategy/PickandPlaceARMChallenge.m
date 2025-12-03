@@ -33,7 +33,7 @@ function [zoneComplete] = PickandPlaceARMChallenge(zoneInspect, optns)
     
     % Capture a point cloud of the zone
     disp('03 Computing Merged Point Cloud...\n');
-    [ptCloud_pic, nonPlane_pic, ptCloud_table, base_to_cam_pose, cam_to_base_pose] = getMergedPTC(zoneInspect,optns); 
+    [ptCloud_pic, nonPlane_pic, ptCloud_table, base_to_cam_pose, cam_to_base_pose] = getMergedPTC(zoneInspect,0.05, optns); 
     
     % Get the pose of each detected object
     disp('04 Obtaining object poses...\n');
@@ -52,9 +52,10 @@ function [zoneComplete] = PickandPlaceARMChallenge(zoneInspect, optns)
         % place
         disp('06 Beginning place....\n');
         moveToQ("Custom",optns,startZone);
-        place("topdown",objectData(j,1),optns); % label for knowing which bin to go to
+        place("topdown",optns); % label for knowing which bin to go to
     
     end
+    doGrip('place', optns);
     pause(5);
 
 end

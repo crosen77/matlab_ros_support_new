@@ -2,13 +2,13 @@
 %% Main Code to Start ARM Pick and Place.
 % Start the ROS connection, handle, goHome, and reset the world.
 clear; close all; clc;
-optns = startRobotWorld;
+optns = startRobotWorld();
 
 % Gray zone 1, easy 
 
 % Can create a flag in optns to choose whether to do static/automated.
-optns{'static'} = false;
-
+optns{'static'} = true;
+%optns{'debug'} = true;
 if optns{'static'}
 
     % -- can set things statically (needs to identiy poses if scene changes)
@@ -24,7 +24,7 @@ end
 PickandPlaceARMChallenge('Zone3', optns);
 
 % Red zone 4, hard
-PickandPlaceARMChallenge('Zone4', optns);
+%PickandPlaceARMChallenge('Zone4', optns);
 
 % Blue zone 5, very hard
-PickandPlaceARMChallenge('Zone5', optns);
+%PickandPlaceARMChallenge('Zone5', optns);
