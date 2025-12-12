@@ -81,166 +81,33 @@ function staticPickAndPlace(optns)
     %                "can" gCan3};
     
     
-     %% Set custome zone2 for the rest of these objects
-    StartZone = [-1.8380   -0.0978    1.8084   -1.7105    0    4.4452];
-    moveToQ("Custom",optns,StartZone); % move to Zone 2
-    
-
-% rCan2---------------------------------------------------------------
-
-    % Hover
-    hover = lift(rCan2, 0.3);
-    moveTo(hover, optns);
-
-    % Pick
-    rCan2(3,4) = rCan2(3,4) + 0.18;
-    moveTo(rCan2, optns);
-    pause(1);
-    doGrip("pick", optns, 0.237); % For sopme reason .23 works over .24 here
-    pause(1);
-
-    % Place w/ custom path
-    moveTo(hover, optns);
-    moveToQ("Custom", optns, [0 0 pi/2 -pi/2 0 0]); % pass through home position
-    pause(2);
-
-    moveToQ("Custom", optns, [5/8*pi 0 pi/2.3 -pi/2.3 0 0]); % Green
-    doGrip("place", optns);
-    pause(1);
-
-    % Return to zone pose via home position - 2 motions
-    moveToQ("Custom", optns, [0 0 pi/2 -pi/2 0 0]); % pass through home position
-    pause(2);
-    moveToQ("Custom",optns,StartZone);
-
-% pouches------------------------------------------------------------
-
-    % Hover
-    hover = lift(pouchP, 0.3);
-    moveTo(hover, optns);
-
-    % Pick
-    pouchP(3,4) = pouchP(3,4) + 0.242;
-    moveTo(pouchP, optns);
-    pause(1);
-    doGrip("pick", optns, 0.665); % HA! Found the value that works!
-    pause(2);
-
-    % Place 
-    moveTo(hover, optns);
-
-    moveToQ("Custom", optns, [-0.8*pi 0 pi/2.3 -pi/2.3 0 0]); % Blue
-    doGrip("place", optns);
-    pause(1);
-
-    % Hover
-    moveTo(hover, optns);
-
-    % Pick
-    pouchP(3,4) = pouchP(3,4) - 0.022;
-    moveTo(pouchP, optns);
-    pause(1);
-    doGrip("pick", optns, 0.66); % HA! Found the value that works!
-    pause(2);
-
-    % Place 
-    moveTo(hover, optns);
-
-    moveToQ("Custom", optns, [-0.8*pi 0 pi/2.3 -pi/2.3 0 0]); % Blue
-    doGrip("place", optns);
-    pause(1);
-
-    % Hover
-    moveTo(hover, optns);
-
-    % Pick
-    pouchP(3,4) = pouchP(3,4) - 0.021;
-    moveTo(pouchP, optns);
-    pause(1);
-    doGrip("pick", optns, 0.665); % HA! Found the value that works!
-    pause(2);
-
-    % Place 
-    moveTo(hover, optns);
-
-    moveToQ("Custom", optns, [-0.8*pi 0 pi/2.3 -pi/2.3 0 0]); % Blue
-    doGrip("place", optns);
-    pause(1);
-
-    % Hover
-    moveTo(hover, optns);
-
-    % Pick
-    pouchP(3,4) = pouchP(3,4) - 0.022;
-    moveTo(pouchP, optns);
-    pause(1);
-    doGrip("pick", optns, 0.675); % HA! Found the value that works!
-    pause(2);
-
-    % Place 
-    moveTo(hover, optns);
-
-    moveToQ("Custom", optns, [-0.8*pi 0 pi/2.3 -pi/2.3 0 0]); % Blue
-    doGrip("place", optns);
-    pause(1);
-    moveToQ('custom', optns, StartZone);
-
-    
-% gCan3----------------------------------------------------------------
-    
-    % Hover
-    hover = lift(gCan3, 0.3);
-    moveTo(hover, optns);
-
-    % Pick
-    gCan3(3,4) = gCan3(3,4) + 0.18;
-    moveTo(gCan3, optns);
-    pause(1);
-    doGrip("pick", optns, 0.24);
-    pause(1);
-
-    % Place through home
-    moveTo(hover, optns);
-    moveToQ("Custom", optns, [0 0 pi/2 -pi/2 0 0]); % pass through home position
-    pause(1);
-
-    moveToQ("Custom", optns, [5/8*pi 0 pi/2.3 -pi/2.3 0 0]); % Green
-    doGrip("place", optns);
-    pause(1);
-
-    % Return to zone pose via home position - 2 motions
-    moveToQ("Custom", optns, [0 0 pi/2 -pi/2 0 0]); % pass through home position
-    pause(1);
-    moveToQ("Custom",optns,StartZone);
-
-% bBottle1------------------------------------------------------------
-
-    % Hover
-    hover = lift(bBottle1, 0.3);
-    moveTo(hover, optns);
-
-    % Pick
-    bBottle1(3,4) = bBottle1(3,4) + 0.24;
-    moveTo(bBottle1, optns);
-    pause(1);
-    doGrip("pick", optns, 0.515); % HA! Found the value that works!
-    pause(1);
-
-    % Place 
-    moveTo(hover, optns);
-
-    moveToQ("Custom", optns, [-0.8*pi 0 pi/2.3 -pi/2.3 0 0]); % Blue
-    doGrip("place", optns);
-    pause(1);
-
-    moveToQ("Custom", optns, [0 0 pi/2 -pi/2 0 0]); % pass through home position
-
+     
     
 % move to Zone 1 config
     StartZone = [0.6482   -0.2317    1.4450   -1.2133    0.0003   -0.9226]; % Should not be set manually like this, but via a variable
     moveToQ("Custom",optns,StartZone); 
     pause(5);
         
+% Spam1------------------SUCCESS----------------------------------
+
+    % Hover
+    hover = lift(spam1, 0.3);
+    moveTo(hover, optns);
+    
+    % Pick
+    spam1(3,4) = spam1(3,4) + 0.14;
+    moveTo(spam1, optns);
+    pause(3);
+    doGrip("pick", optns, 0.335);
+
+    % Place
+    moveTo(hover, optns);
+    moveToQ("Custom", optns, [5/8*pi 0 pi/2.3 -pi/2.3 0 0]); % Green
+    doGrip("place", optns);
+  
+    % Return to zone pose
+    moveToQ("Custom",optns,StartZone); 
+    
 % gCan1---------------------------------------------------------------
         
     % Hover over
@@ -282,18 +149,18 @@ function staticPickAndPlace(optns)
   
     % Return to zone pose
     moveToQ("Custom", optns, [0 0 pi/2 -pi/2 0 0]); % pass through home position
-    moveToQ("Custom",optns,StartZone);         
+    moveToQ("Custom",optns,StartZone);     
+
 % rCan1---------------------------------------------------------------
     
     % Hover
-Goal active
     hover = lift(rCan1, 0.3);        
     moveTo(hover, optns);
 
     % Pick
     rCan1(3,4) = rCan1(3,4) + 0.18;
     moveTo(rCan1, optns);
-    doGrip("pick", optns, 0.24);
+    doGrip("pick", optns, 0.243);
 
     % Place
     moveTo(hover, optns);
@@ -348,28 +215,166 @@ Goal active
     % Return to zone pose
     moveToQ("Custom",optns,StartZone); 
 
-% Spam1------------------SUCCESS----------------------------------
+
+   
+%% Set custome zone2 for the rest of these objects
+    StartZone = [-1.8380   -0.0978    1.8084   -1.7105    0    4.4452];
+    moveToQ("Custom",optns,StartZone); % move to Zone 2
+    
+
+% rCan2---------------------------------------------------------------
 
     % Hover
-    hover = lift(spam1, 0.3);
+    hover = lift(rCan2, 0.3);
     moveTo(hover, optns);
-    
-    % Pick
-    spam1(3,4) = spam1(3,4) + 0.14;
-    moveTo(spam1, optns);
-    pause(3);
-    doGrip("pick", optns, 0.34);
 
-    % Place
+    % Pick
+    rCan2(3,4) = rCan2(3,4) + 0.18;
+    moveTo(rCan2, optns);
+    pause(1);
+    doGrip("pick", optns, 0.237); % For sopme reason .23 works over .24 here
+    pause(1);
+
+    % Place w/ custom path
     moveTo(hover, optns);
+    moveToQ("Custom", optns, [0 0 pi/2 -pi/2 0 0]); % pass through home position
+    pause(2);
+
     moveToQ("Custom", optns, [5/8*pi 0 pi/2.3 -pi/2.3 0 0]); % Green
     doGrip("place", optns);
-  
-    % Return to zone pose
-    moveToQ("Custom",optns,StartZone); 
-   
+    pause(1);
 
-% --- bottle in zone 3 -----    
+    % Return to zone pose via home position - 2 motions
+    moveToQ("Custom", optns, [0 0 pi/2 -pi/2 0 0]); % pass through home position
+    pause(2);
+    moveToQ("Custom",optns,StartZone);
+
+% gCan3----------------------------------------------------------------
+    
+    % Hover
+    hover = lift(gCan3, 0.3);
+    moveTo(hover, optns);
+
+    % Pick
+    gCan3(3,4) = gCan3(3,4) + 0.18;
+    moveTo(gCan3, optns);
+    pause(1);
+    doGrip("pick", optns, 0.24);
+    pause(1);
+
+    % Place through home
+    moveTo(hover, optns);
+    moveToQ("Custom", optns, [0 0 pi/2 -pi/2 0 0]); % pass through home position
+    pause(1);
+
+    moveToQ("Custom", optns, [5/8*pi 0 pi/2.3 -pi/2.3 0 0]); % Green
+    doGrip("place", optns);
+    pause(1);
+
+    % Return to zone pose via home position - 2 motions
+    moveToQ("Custom", optns, [0 0 pi/2 -pi/2 0 0]); % pass through home position
+    pause(1);
+    moveToQ("Custom",optns,StartZone);
+
+% pouches------------------------------------------------------------
+
+    % Hover
+    hover = lift(pouchP, 0.3);
+    moveTo(hover, optns);
+
+    % Pick
+    pouchP(3,4) = pouchP(3,4) + 0.242;
+    moveTo(pouchP, optns);
+    pause(1);
+    doGrip("pick", optns, 0.665); % HA! Found the value that works!
+    pause(2);
+
+    % Place 
+    moveTo(hover, optns);
+
+    moveToQ("Custom", optns, [-0.8*pi 0 pi/2.3 -pi/2.3 0 0]); % Blue
+    doGrip("place", optns);
+    pause(1);
+
+    % Hover
+    moveTo(hover, optns);
+
+    % Pick
+    pouchP(3,4) = pouchP(3,4) - 0.022;
+    moveTo(pouchP, optns);
+    pause(1);
+    doGrip("pick", optns, 0.66); % HA! Found the value that works!
+    pause(2);
+
+    % Place 
+    moveTo(hover, optns);
+
+    moveToQ("Custom", optns, [-0.8*pi 0 pi/2.3 -pi/2.3 0 0]); % Blue
+    doGrip("place", optns);
+    pause(1);
+
+    % Hover
+    moveTo(hover, optns);
+
+    % Pick
+    pouchP(3,4) = pouchP(3,4) - 0.0228;
+    pouchP(1,4) = pouchP(1,4) - 0.005;
+    moveTo(pouchP, optns);
+    pause(1);
+    doGrip("pick", optns, 0.7); % HA! Found the value that works!
+    pause(2);
+
+    % Place 
+    moveTo(hover, optns);
+
+    moveToQ("Custom", optns, [-0.8*pi 0 pi/2.3 -pi/2.3 0 0]); % Blue
+    doGrip("place", optns);
+    pause(1);
+
+    % Hover
+    moveTo(hover, optns);
+
+    % Pick
+    pouchP(3,4) = pouchP(3,4) - 0.022;
+    moveTo(pouchP, optns);
+    pause(1);
+    doGrip("pick", optns, 0.685); % HA! Found the value that works!
+    pause(2);
+
+    % Place 
+    moveTo(hover, optns);
+
+    moveToQ("Custom", optns, [-0.8*pi 0 pi/2.3 -pi/2.3 0 0]); % Blue
+    doGrip("place", optns);
+    pause(1);
+    moveToQ('custom', optns, StartZone);
+
+    
+
+
+% bBottle1------------------------------------------------------------
+
+    % Hover
+    hover = lift(bBottle1, 0.3);
+    moveTo(hover, optns);
+
+    % Pick
+    bBottle1(3,4) = bBottle1(3,4) + 0.24;
+    moveTo(bBottle1, optns);
+    pause(1);
+    doGrip("pick", optns, 0.515); % HA! Found the value that works!
+    pause(1);
+
+    % Place 
+    moveTo(hover, optns);
+
+    moveToQ("Custom", optns, [-0.8*pi 0 pi/2.3 -pi/2.3 0 0]); % Blue
+    doGrip("place", optns);
+    pause(1);
+
+    moveToQ("Custom", optns, [0 0 pi/2 -pi/2 0 0]); % pass through home position
+
+% --- bottle in zone 3 -----
 
     zone3bottle = [0.3700    0.3000    2.0300   -1.2500    0.0002         0];
     moveToQ('custom', optns, zone3bottle);

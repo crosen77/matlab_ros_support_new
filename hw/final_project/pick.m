@@ -49,10 +49,14 @@ function grip_result = pick(strategy,objectData,optns)
         doGripValue = 0.21; %% WORKS try .205 becayse it currently sometimes holds on
         bin = 'blue';
     elseif strcmp(string(label), "vBottle")
-        %mat_R_T_M(2,4) = mat_R_T_M(2,4) - optns{'toolAdjustment'};
-        %mat_R_T_M = mat_R_T_M * troty(-pi/2);
+        %if mat_R_T_M(2, 4) > .35
+        %    zOffset = 0.245; 
+        %else
+        %    strategy = 'sidepick';
+        %    mat_R_T_M(1:3,1:3) = [0 0 -1 ; 0 -1 0 ; -1 0 0];
+        %end
         zOffset = 0.245; 
-        doGripValue = 0.515; % .515 works, but trying higher to knock over
+        doGripValue = 0.515;
         bin = 'blue';
     end
     
@@ -70,6 +74,9 @@ function grip_result = pick(strategy,objectData,optns)
         elseif strcmpi(strategy,'direct')
             pick_R_T_M = lift(mat_R_T_M, zOffset);
             traj_result = moveTo(pick_R_T_M,optns);
+
+        %elseif strcmpi(strategy,'sidepick')
+            
         end
         % Grip object
         

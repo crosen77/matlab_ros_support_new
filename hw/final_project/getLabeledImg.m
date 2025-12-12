@@ -46,7 +46,7 @@ function [all_bboxes, all_scores, all_labels, numObjects, myImg, annotatedImage]
         elseif strcmp(zone, 'Zone4')
             [bboxes,scores,labels] = detect(trainedYoloNet, myImg, Threshold=0.6);
         else
-            [bboxes,scores,labels] = detect(trainedYoloNet, myImg, Threshold=0.5);
+            [bboxes,scores,labels] = detect(trainedYoloNet, myImg, Threshold=0.48);
         end
 
 

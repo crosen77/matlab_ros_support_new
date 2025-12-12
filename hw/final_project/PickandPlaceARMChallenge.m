@@ -64,8 +64,9 @@ function [zoneComplete] = PickandPlaceARMChallenge(zoneInspect, optns)
     
     moveToQ('custom', optns, startZone)
     [bboxes, ~, labeled, numOfObjects, myImg, annotatedImage] = getLabeledImg(zoneInspect,optns);
-    if size(bboxes, 1) > 1
+    if size(bboxes, 1) > 0 & optns{'loopCounter'} < 3
         PickandPlaceARMChallenge(zoneInspect, optns);
+        optns{'loopCounter'} = optns{'loopCounter'} + 1;
     end
 
 end

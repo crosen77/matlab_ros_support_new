@@ -11,9 +11,9 @@ optns{'debug'} = true;
 
 staticPickAndPlace(optns);
 
-
 PickandPlaceARMChallenge('Zone3Pouch', optns);
 PickandPlaceARMChallenge('Zone3', optns);
+
 PickandPlaceARMChallenge('Zone4', optns);
 
 % Blue zone 5, very hard

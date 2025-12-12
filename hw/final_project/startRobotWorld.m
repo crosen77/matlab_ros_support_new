@@ -36,7 +36,8 @@ function optns = startRobotWorld(masterhostIP, nodeIP, robotName)
             "toolAdjustment", ...
             "tf_listening_time",...
             "rHandle",...
-            "cleanStart"];
+            "cleanStart",...
+            "loopCounter"];
    
    values = {  0,...        "debug"
                0,...        "toolFlag"
@@ -52,7 +53,7 @@ function optns = startRobotWorld(masterhostIP, nodeIP, robotName)
                10,...       "tf_listening_time"
                r,...        "rHandle"
                true,...     "cleanStart"
-               };
+               0};
     optns = dictionary(keys,values);
 
     %% Go Home 
